@@ -1,0 +1,619 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20193.19.0821.2225                               -->
+<workbook original-version='18.1' source-build='2019.3.0 (20193.19.0821.2225)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='EmployeeSQL' inline='true' name='federated.1ebw79r0v2iikr10wcezj0me6m7j' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='departments' name='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2'>
+            <connection class='textscan' directory='C:/MWB/DATA COURSE/HOMEWORK/sql-challenge/data' filename='departments.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[dept_emp.csv].[emp_no]' />
+              <expression op='[titles.csv].[emp_no]' />
+            </expression>
+          </clause>
+          <relation join='inner' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[dept_emp.csv].[emp_no]' />
+                <expression op='[salaries.csv].[emp_no]' />
+              </expression>
+            </clause>
+            <relation join='inner' type='join'>
+              <clause type='join'>
+                <expression op='='>
+                  <expression op='[dept_emp.csv].[emp_no]' />
+                  <expression op='[employees.csv].[emp_no]' />
+                </expression>
+              </clause>
+              <relation join='inner' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[departments.csv].[dept_no]' />
+                    <expression op='[dept_manager.csv].[dept_no]' />
+                  </expression>
+                </clause>
+                <relation join='inner' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[departments.csv].[dept_no]' />
+                      <expression op='[dept_emp.csv].[dept_no]' />
+                    </expression>
+                  </clause>
+                  <relation connection='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2' name='departments.csv' table='[departments#csv]' type='table'>
+                    <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                      <column datatype='string' name='dept_no' ordinal='0' />
+                      <column datatype='string' name='dept_name' ordinal='1' />
+                    </columns>
+                  </relation>
+                  <relation connection='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2' name='dept_emp.csv' table='[dept_emp#csv]' type='table'>
+                    <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                      <column datatype='integer' name='emp_no' ordinal='0' />
+                      <column datatype='string' name='dept_no' ordinal='1' />
+                      <column datatype='date' name='from_date' ordinal='2' />
+                      <column datatype='date' name='to_date' ordinal='3' />
+                    </columns>
+                  </relation>
+                </relation>
+                <relation connection='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2' name='dept_manager.csv' table='[dept_manager#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='string' name='dept_no' ordinal='0' />
+                    <column datatype='integer' name='emp_no' ordinal='1' />
+                    <column datatype='date' name='from_date' ordinal='2' />
+                    <column datatype='date' name='to_date' ordinal='3' />
+                  </columns>
+                </relation>
+              </relation>
+              <relation connection='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2' name='employees.csv' table='[employees#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='integer' name='emp_no' ordinal='0' />
+                  <column datatype='date' name='birth_date' ordinal='1' />
+                  <column datatype='string' name='first_name' ordinal='2' />
+                  <column datatype='string' name='last_name' ordinal='3' />
+                  <column datatype='string' name='gender' ordinal='4' />
+                  <column datatype='date' name='hire_date' ordinal='5' />
+                </columns>
+              </relation>
+            </relation>
+            <relation connection='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2' name='salaries.csv' table='[salaries#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='integer' name='emp_no' ordinal='0' />
+                <column datatype='integer' name='salary' ordinal='1' />
+                <column datatype='date' name='from_date' ordinal='2' />
+                <column datatype='date' name='to_date' ordinal='3' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.1jj3vos0gm34ia14rxx1r1rwwcu2' name='titles.csv' table='[titles#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='emp_no' ordinal='0' />
+              <column datatype='string' name='title' ordinal='1' />
+              <column datatype='date' name='from_date' ordinal='2' />
+              <column datatype='date' name='to_date' ordinal='3' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[birth_date]' value='[employees.csv].[birth_date]' />
+          <map key='[dept_name]' value='[departments.csv].[dept_name]' />
+          <map key='[dept_no (dept_emp.csv)]' value='[dept_emp.csv].[dept_no]' />
+          <map key='[dept_no (dept_manager.csv)]' value='[dept_manager.csv].[dept_no]' />
+          <map key='[dept_no]' value='[departments.csv].[dept_no]' />
+          <map key='[emp_no (dept_manager.csv)]' value='[dept_manager.csv].[emp_no]' />
+          <map key='[emp_no (employees.csv)]' value='[employees.csv].[emp_no]' />
+          <map key='[emp_no (salaries.csv)]' value='[salaries.csv].[emp_no]' />
+          <map key='[emp_no (titles.csv)]' value='[titles.csv].[emp_no]' />
+          <map key='[emp_no]' value='[dept_emp.csv].[emp_no]' />
+          <map key='[first_name]' value='[employees.csv].[first_name]' />
+          <map key='[from_date (dept_manager.csv)]' value='[dept_manager.csv].[from_date]' />
+          <map key='[from_date (salaries.csv)]' value='[salaries.csv].[from_date]' />
+          <map key='[from_date (titles.csv)]' value='[titles.csv].[from_date]' />
+          <map key='[from_date]' value='[dept_emp.csv].[from_date]' />
+          <map key='[gender]' value='[employees.csv].[gender]' />
+          <map key='[hire_date]' value='[employees.csv].[hire_date]' />
+          <map key='[last_name]' value='[employees.csv].[last_name]' />
+          <map key='[salary]' value='[salaries.csv].[salary]' />
+          <map key='[title]' value='[titles.csv].[title]' />
+          <map key='[to_date (dept_manager.csv)]' value='[dept_manager.csv].[to_date]' />
+          <map key='[to_date (salaries.csv)]' value='[salaries.csv].[to_date]' />
+          <map key='[to_date (titles.csv)]' value='[titles.csv].[to_date]' />
+          <map key='[to_date]' value='[dept_emp.csv].[to_date]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[departments.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dept_no</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dept_no]</local-name>
+            <parent-name>[departments.csv]</parent-name>
+            <remote-alias>dept_no</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dept_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dept_name]</local-name>
+            <parent-name>[departments.csv]</parent-name>
+            <remote-alias>dept_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[dept_emp.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>emp_no</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[emp_no]</local-name>
+            <parent-name>[dept_emp.csv]</parent-name>
+            <remote-alias>emp_no</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dept_no</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dept_no (dept_emp.csv)]</local-name>
+            <parent-name>[dept_emp.csv]</parent-name>
+            <remote-alias>dept_no</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>from_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[from_date]</local-name>
+            <parent-name>[dept_emp.csv]</parent-name>
+            <remote-alias>from_date</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>to_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[to_date]</local-name>
+            <parent-name>[dept_emp.csv]</parent-name>
+            <remote-alias>to_date</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[dept_manager.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>dept_no</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[dept_no (dept_manager.csv)]</local-name>
+            <parent-name>[dept_manager.csv]</parent-name>
+            <remote-alias>dept_no</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>emp_no</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[emp_no (dept_manager.csv)]</local-name>
+            <parent-name>[dept_manager.csv]</parent-name>
+            <remote-alias>emp_no</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>from_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[from_date (dept_manager.csv)]</local-name>
+            <parent-name>[dept_manager.csv]</parent-name>
+            <remote-alias>from_date</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>to_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[to_date (dept_manager.csv)]</local-name>
+            <parent-name>[dept_manager.csv]</parent-name>
+            <remote-alias>to_date</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>emp_no</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[emp_no (employees.csv)]</local-name>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias>emp_no</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>birth_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[birth_date]</local-name>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias>birth_date</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[first_name]</local-name>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias>first_name</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>last_name</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[last_name]</local-name>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias>last_name</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gender</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gender]</local-name>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias>gender</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hire_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[hire_date]</local-name>
+            <parent-name>[employees.csv]</parent-name>
+            <remote-alias>hire_date</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[salaries.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>emp_no</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[emp_no (salaries.csv)]</local-name>
+            <parent-name>[salaries.csv]</parent-name>
+            <remote-alias>emp_no</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>salary</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[salary]</local-name>
+            <parent-name>[salaries.csv]</parent-name>
+            <remote-alias>salary</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>from_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[from_date (salaries.csv)]</local-name>
+            <parent-name>[salaries.csv]</parent-name>
+            <remote-alias>from_date</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>to_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[to_date (salaries.csv)]</local-name>
+            <parent-name>[salaries.csv]</parent-name>
+            <remote-alias>to_date</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[titles.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>emp_no</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[emp_no (titles.csv)]</local-name>
+            <parent-name>[titles.csv]</parent-name>
+            <remote-alias>emp_no</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>title</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[title]</local-name>
+            <parent-name>[titles.csv]</parent-name>
+            <remote-alias>title</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LEN_RUS' />
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>from_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[from_date (titles.csv)]</local-name>
+            <parent-name>[titles.csv]</parent-name>
+            <remote-alias>from_date</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>to_date</remote-name>
+            <remote-type>133</remote-type>
+            <local-name>[to_date (titles.csv)]</local-name>
+            <parent-name>[titles.csv]</parent-name>
+            <remote-alias>to_date</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column caption='Birth Date' datatype='date' name='[birth_date]' role='dimension' type='ordinal' />
+      <column caption='Dept Name' datatype='string' name='[dept_name]' role='dimension' type='nominal' />
+      <column caption='Dept No (Dept Emp.Csv)' datatype='string' name='[dept_no (dept_emp.csv)]' role='dimension' type='nominal' />
+      <column caption='Dept No (Dept Manager.Csv)' datatype='string' name='[dept_no (dept_manager.csv)]' role='dimension' type='nominal' />
+      <column caption='Dept No' datatype='string' name='[dept_no]' role='dimension' type='nominal' />
+      <column caption='Emp No (Dept Manager.Csv)' datatype='integer' name='[emp_no (dept_manager.csv)]' role='measure' type='quantitative' />
+      <column caption='Emp No (Employees.Csv)' datatype='integer' name='[emp_no (employees.csv)]' role='measure' type='quantitative' />
+      <column caption='Emp No (Salaries.Csv)' datatype='integer' name='[emp_no (salaries.csv)]' role='measure' type='quantitative' />
+      <column caption='Emp No (Titles.Csv)' datatype='integer' name='[emp_no (titles.csv)]' role='measure' type='quantitative' />
+      <column caption='Emp No' datatype='integer' name='[emp_no]' role='measure' type='quantitative' />
+      <column caption='First Name' datatype='string' name='[first_name]' role='dimension' type='nominal' />
+      <column caption='From Date (Dept Manager.Csv)' datatype='date' name='[from_date (dept_manager.csv)]' role='dimension' type='ordinal' />
+      <column caption='From Date (Salaries.Csv)' datatype='date' name='[from_date (salaries.csv)]' role='dimension' type='ordinal' />
+      <column caption='From Date (Titles.Csv)' datatype='date' name='[from_date (titles.csv)]' role='dimension' type='ordinal' />
+      <column caption='From Date' datatype='date' name='[from_date]' role='dimension' type='ordinal' />
+      <column caption='Gender' datatype='string' name='[gender]' role='dimension' type='nominal' />
+      <column caption='Hire Date' datatype='date' name='[hire_date]' role='dimension' type='ordinal' />
+      <column caption='Last Name' datatype='string' name='[last_name]' role='dimension' type='nominal' />
+      <column caption='Salary' datatype='integer' name='[salary]' role='measure' type='quantitative' />
+      <column caption='Title' datatype='string' name='[title]' role='dimension' type='nominal' />
+      <column caption='To Date (Dept Manager.Csv)' datatype='date' name='[to_date (dept_manager.csv)]' role='dimension' type='ordinal' />
+      <column caption='To Date (Salaries.Csv)' datatype='date' name='[to_date (salaries.csv)]' role='dimension' type='ordinal' />
+      <column caption='To Date (Titles.Csv)' datatype='date' name='[to_date (titles.csv)]' role='dimension' type='ordinal' />
+      <column caption='To Date' datatype='date' name='[to_date]' role='dimension' type='ordinal' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.656171' measure-ordering='alphabetic' measure-percentage='0.343829' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{940DE2F4-B922-4714-9939-B8C6AB479699}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{285ECBE8-8FFB-404C-961C-3030AF2D6F40}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAAA7DAAAOwwHHb6hk
+      AAACFUlEQVR4nO3TMQEAIAzAMMC/5yFjRxMFfXpnZg5Eve0A2GQA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQD
+      kGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBp
+      BiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA
+      0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDN
+      AKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxA
+      mgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZ
+      gDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFI
+      MwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKQZgDQDkGYA0gxAmgFIMwBpBiDNAKR9Y+0F
+      fBUOM1sAAAAASUVORK5CYII=
+    </thumbnail>
+  </thumbnails>
+</workbook>
